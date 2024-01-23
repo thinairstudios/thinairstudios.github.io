@@ -1,104 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('mountain.jpg') center/cover no-repeat; /* Replace 'mountain.jpg' with your image file */
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
+        .button {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #3498db;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+        .button:hover {
+            background-color: #2980b9;
+        }
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="eventlund">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+        .small-button-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 5px;
+        }
 
-  <title>eventlund</title>
-  <link rel="manifest" href="manifest.json">
+        .small-button {
+            padding: 2px 4px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #3498db;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+            font-size: 15px;
+            margin-left: 1px;
+            margin-right: 1px;
+        }
+
+        .small-button:hover {
+            background-color: #2980b9;
+        }
+
+        #list-container {
+            width: 300px;
+        }
+
+        #item-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .thumbnail {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 10px;
+            border-radius: 10px; /* Adjust the value to control the roundness of the border */
+        }
+
+        .item-title {
+            font-size: 1.2em;
+            margin-right: 10px;
+            text-align: start;
+        }
+
+
+        .bottom-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+    </style>
 </head>
 <body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
-    const serviceWorkerVersion = "1076371199";
-    var scriptLoaded = false;
-    function loadMainDartJs() {
-      if (scriptLoaded) {
-        return;
-      }
-      scriptLoaded = true;
-      var scriptTag = document.createElement('script');
-      scriptTag.src = 'main.dart.js';
-      scriptTag.type = 'application/javascript';
-      document.body.append(scriptTag);
-    }
-
-    if ('serviceWorker' in navigator) {
-      // Service workers are supported. Use them.
-      window.addEventListener('load', function () {
-        // Wait for registration to finish before dropping the <script> tag.
-        // Otherwise, the browser will load the script multiple times,
-        // potentially different versions.
-        var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
-        navigator.serviceWorker.register(serviceWorkerUrl)
-          .then((reg) => {
-            function waitForActivation(serviceWorker) {
-              serviceWorker.addEventListener('statechange', () => {
-                if (serviceWorker.state == 'activated') {
-                  console.log('Installed new service worker.');
-                  loadMainDartJs();
-                }
-              });
-            }
-            if (!reg.active && (reg.installing || reg.waiting)) {
-              // No active web worker and we have installed or are installing
-              // one for the first time. Simply wait for it to activate.
-              waitForActivation(reg.installing || reg.waiting);
-            } else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
-              // When the app updates the serviceWorkerVersion changes, so we
-              // need to ask the service worker to update.
-              console.log('New service worker available.');
-              reg.update();
-              waitForActivation(reg.installing);
-            } else {
-              // Existing service worker is still good.
-              console.log('Loading app from service worker.');
-              loadMainDartJs();
-            }
-          });
-
-        // If service worker doesn't succeed in a reasonable amount of time,
-        // fallback to plaint <script> tag.
-        setTimeout(() => {
-          if (!scriptLoaded) {
-            console.warn(
-              'Failed to load app from service worker. Falling back to plain <script> tag.',
-            );
-            loadMainDartJs();
-          }
-        }, 4000);
-      });
-    } else {
-      // Service workers not supported. Just drop the <script> tag.
-      loadMainDartJs();
-    }
-  </script>
+    <div>
+        <h1>Thinair Studios</h1>
+        <div id="list-container">
+            <ul id="item-list">
+                <li class="list-item">
+                    <img src="chesssweeper_icon.png" alt="chesssweeper_icon" class="thumbnail">
+                    <span class="item-title">ChessSweeper
+                    <br>
+                    <div class="small-button-container">
+                        <a href="https://apps.apple.com/us/app/eventlund/id1607837038" class="small-button">ios</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.thinairstudios.eventlund" class="small-button">android</a>
+                        <a href="chesssweeper" class="small-button">web</a>
+                    </div>
+                    </span>
+                </li>
+                <li class="list-item">
+                    <img src="eventlund_icon.png" alt="eventlund_icon" class="thumbnail">
+                    <span class="item-title">EventLund
+                    <br>
+                    <div class="small-button-container">
+                        <a href="https://apps.apple.com/us/app/chesssweeper/id6475792499" class="small-button">ios</a>
+                        <a href="https://play.google.com/store/apps/details?id=se.thinairstudios.chesssweeper" class="small-button">android</a>
+                        <a href="eventlund" class="small-button">web</a>
+                    </div>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="button-container bottom-right">
+            <a href="mailto:gurre123@gmail.com" class="button">Contact Us</a>
+        </div>
 </body>
 </html>
