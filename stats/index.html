@@ -5,16 +5,17 @@
 </head>
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+<div id="info"></div>
 
 <script>
-function get(name){
-   if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-      return decodeURIComponent(name[1]);
+const searchParams = new URLSearchParams(window.location.search);
+var final_html = "";
+for(const param of searchParam) {
+   final_html += param[0] + ":" + param[1] + "<br>";
 }
 
-console.log(get("param"))
+document.getElementById('info').innerHTML = final_html;
+
 </script>
 
 </body>
