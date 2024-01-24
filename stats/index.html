@@ -10,7 +10,7 @@
 <script>
 const searchParams = new URLSearchParams(window.location.search);
 var final_html = "";
-for(const param of searchParam) {
+for(const param of searchParams) {
    final_html += param[0] + ":" + param[1] + "<br>";
 }
 
